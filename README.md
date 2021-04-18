@@ -1,4 +1,4 @@
-You should add chromedriver.exe to "src > driver > chromedriver.exe" path to run the program.
+You should add chromedriver.exe to "<i>src &gt; driver &gt; chromedriver.exe</i>" path to run the program.
 
 # DEMO
 
