@@ -62,9 +62,15 @@ public class Elements {
         return driver.findElement(By.xpath("/html/body/div[4]/div[3]/div/div/a"));
     }
 
+    public List getAllItemsByCss(String selector) {
+        List<WebElement> itemList = new ArrayList();
+        itemList = driver.findElements(By.cssSelector(selector));
+        return itemList;
+
+    }
+
     public WebElement randomProduct() {
-        List<WebElement> list = new ArrayList();
-        list = driver.findElements(By.cssSelector("li[product-index]"));
+        List<WebElement> list = getAllItemsByCss("li[product-index]");
         int listCount = list.toArray().length;
 
         Random random = new Random();
@@ -73,13 +79,40 @@ public class Elements {
     }
 
     public WebElement addCartButton() {
-        return driver.findElement(By.xpath("/html/body/div[3]/div[2]/div/div[1]" +
-                "/div[1]/div[2]/div[2]/div[1]/div/div[3]/div[3]/section/div/div/div[2]/form/button"));
+        return driver.findElement(By.id("add-to-basket"));
     }
 
     public WebElement productPrice(){
         return driver.findElement(By.id("sp-price-discountPrice"));
     }
 
+    public WebElement productName(){
+        return driver.findElement(By.id("sp-title"));
+    }
 
+    public WebElement productSubTitle(){
+        return driver.findElement(By.id("sp-subTitle"));
+    }
+
+    public WebElement myCartButton(){
+        return driver.findElement(By.cssSelector("a[href='https://www.gittigidiyor.com/sepetim']"));
+    }
+
+    public WebElement firstProductInCart(){
+        return driver.findElement(By.className("product-item-box-container")); // first element in cart
+    }
+
+    public WebElement cartDeleteButton() {
+        return driver.findElement(By.cssSelector("a[title='Sil']"));
+    }
+
+    public WebElement selectInCart(){
+        return driver.findElement(By.xpath("/html/body/div[1]/div[2]/div/div[1]/form" +
+                "/div/div[2]/div[2]/div[1]/div/div[6]/div[2]/div[2]/div[1]/div[4]/div/div[2]/select/option[2]"));
+    }
+
+    public List<WebElement> productsInCart(){
+        List<WebElement> products = driver.findElements(By.className("product-item-box-container")); // products
+        return products;
+    }
 }
